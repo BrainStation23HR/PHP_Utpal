@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Traits\ApiResponseTrait;
 use App\Http\Services\DeviceDataService;
 use App\Http\Requests\StoreDeviceDataRequest;
+use Illuminate\Http\JsonResponse;
 
 class DeviceDataController extends Controller
 {
@@ -17,7 +18,7 @@ class DeviceDataController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(StoreDeviceDataRequest $request)
+    public function __invoke(StoreDeviceDataRequest $request): JsonResponse
     {
         $record = $this->service->store($request->validated());
 

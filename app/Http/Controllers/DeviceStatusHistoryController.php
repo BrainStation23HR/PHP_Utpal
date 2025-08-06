@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Traits\ApiResponseTrait;
 use App\Http\Services\DeviceDataService;
 use App\Http\Requests\GetDeviceHistoryRequest;
+use Illuminate\Http\JsonResponse;
 
 class DeviceStatusHistoryController extends Controller
 {
@@ -17,7 +18,7 @@ class DeviceStatusHistoryController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(GetDeviceHistoryRequest $request, $deviceId)
+    public function __invoke(GetDeviceHistoryRequest $request, $deviceId): JsonResponse
     {
         $from = $request->query('from');
         $to = $request->query('to');

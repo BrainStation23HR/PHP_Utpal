@@ -19,6 +19,11 @@ class Device extends Model
     protected $table = 'devices';
 
     /**
+     * Indicates if the IDs are auto-incrementing.
+     */
+    public $incrementing = false;
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -28,6 +33,19 @@ class Device extends Model
         'location',
         'api_key',
     ];
+
+    /**
+     * The "booting" method of the model.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        // This is the key part for UUIDs
+        static::creating(function ($model) {
+            $model->id = (string) Str::uuid();
+        });
+    }
 
 
     /**

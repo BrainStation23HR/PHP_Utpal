@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Services\DeviceDataService;
 use App\Traits\ApiResponseTrait;
+use Illuminate\Http\JsonResponse;
 
 class DeviceStatusController extends Controller
 {
@@ -15,7 +16,7 @@ class DeviceStatusController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(int $deviceId)
+    public function __invoke(int $deviceId): JsonResponse
     {
     $status = $this->service->getLatestStatus($deviceId);
 

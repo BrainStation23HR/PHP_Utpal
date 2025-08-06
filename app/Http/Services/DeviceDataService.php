@@ -6,13 +6,15 @@ use App\Events\DeviceDataReceived;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use App\Http\Repositories\DeviceDataRepository;
+use App\Http\Repositories\DeviceRepository;
+use App\Models\Device;
 
 class DeviceDataService
 {
     protected string $cachePrefix = 'device_status:';
     protected int $cacheTtl = 60; // seconds
 
-    public function __construct(protected DeviceDataRepository $repository) {}
+    public function __construct(protected DeviceDataRepository $repository, protected DeviceRepository $deviceRepository) {}
 
     public function store(array $data)
     {
@@ -42,4 +44,10 @@ class DeviceDataService
     {
         return $this->repository->getHistory($deviceId, $from, $to);
     }
+
+    public function updateDeviceMetaData(string $id, array $data): Device
+    {
+        return $this->deviceRepository->update($id, $data);
+    }
+    
 }
