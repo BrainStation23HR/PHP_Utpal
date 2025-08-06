@@ -12,11 +12,18 @@ class DeviceStatusHistoryController extends Controller
 {
     use ApiResponseTrait;
 
+    /**
+     *
+     * @param DeviceDataService $service
+     */
     public function __construct(protected DeviceDataService $service)
     {}
 
     /**
-     * Handle the incoming request.
+     *
+     * @param GetDeviceHistoryRequest $request
+     * @param [type] $deviceId
+     * @return JsonResponse
      */
     public function __invoke(GetDeviceHistoryRequest $request, $deviceId): JsonResponse
     {

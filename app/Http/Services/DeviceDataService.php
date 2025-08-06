@@ -25,7 +25,12 @@ class DeviceDataService
 
         return $record;
     }
-
+    /**
+     * Get latest device status
+     *
+     * @param integer $deviceId
+     * @return array|null
+     */
     public function getLatestStatus(int $deviceId): ?array
     {
         $cacheKey = $this->cachePrefix . $deviceId;
@@ -40,11 +45,26 @@ class DeviceDataService
         });
     }
 
+    /**
+     * Get device status history
+     *
+     * @param integer $deviceId
+     * @param string $from
+     * @param string $to
+     * @return Collection
+     */
     public function getHistory(int $deviceId, string $from, string $to): Collection
     {
         return $this->repository->getHistory($deviceId, $from, $to);
     }
 
+    /**
+     * Update device meta data
+     *
+     * @param string $id
+     * @param array $data
+     * @return Device
+     */
     public function updateDeviceMetaData(string $id, array $data): Device
     {
         return $this->deviceRepository->update($id, $data);

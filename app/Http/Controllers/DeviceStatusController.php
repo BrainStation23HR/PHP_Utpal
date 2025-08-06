@@ -11,10 +11,17 @@ class DeviceStatusController extends Controller
 {
     use ApiResponseTrait;
 
+    /**
+     *
+     * @param DeviceDataService $service
+     */
     public function __construct(protected DeviceDataService $service)
     {}
+    
     /**
-     * Handle the incoming request.
+     *
+     * @param integer $deviceId
+     * @return JsonResponse
      */
     public function __invoke(int $deviceId): JsonResponse
     {

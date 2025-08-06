@@ -18,6 +18,11 @@ class DeviceDataRepository extends BaseRepository
         return $this->model->create($data);
     }
 
+    /**
+     *
+     * @param string $deviceId
+     * @return DeviceData|null
+     */
     public function latestStatus(string $deviceId): ?DeviceData
     {
         return $this->model
@@ -26,6 +31,14 @@ class DeviceDataRepository extends BaseRepository
             ->first();
     }
 
+    /**
+     * Get History
+     *
+     * @param string $deviceId
+     * @param string $from
+     * @param string $to
+     * @return Collection
+     */
     public function getHistory(string $deviceId, string $from, string $to): Collection
     {
         return $this->model
