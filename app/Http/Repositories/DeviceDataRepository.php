@@ -18,7 +18,7 @@ class DeviceDataRepository extends BaseRepository
         return $this->model->create($data);
     }
 
-    public function latestStatus(int $deviceId): ?DeviceData
+    public function latestStatus(string $deviceId): ?DeviceData
     {
         return $this->model
             ->where('device_id', $deviceId)
@@ -26,12 +26,12 @@ class DeviceDataRepository extends BaseRepository
             ->first();
     }
 
-    public function getHistory(int $deviceId, string $from, string $to): Collection
+    public function getHistory(string $deviceId, string $from, string $to): Collection
     {
         return $this->model
             ->where('device_id', $deviceId)
-            ->whereBetween('created_at', [$from, $to])
-            ->orderBy('created_at', 'desc')
+            ->whereBetween('event_timestamp', [$from, $to]) 
+            ->orderBy('event_timestamp', 'desc')
             ->get();
     }
 
