@@ -1,0 +1,422 @@
+{
+	"info": {
+		"_postman_id": "794f0402-c3b3-47c7-8d15-74aa8ff0f185",
+		"name": "Iot_monitoring",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "543398",
+		"_collection_link": "https://restless-capsule-134181.postman.co/workspace/Finpack~952dc4a2-2377-4863-89f6-6f48b6f92266/collection/543398-794f0402-c3b3-47c7-8d15-74aa8ff0f185?action=share&source=collection_link&creator=543398"
+	},
+	"item": [
+		{
+			"name": "Device Data store",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "xyz123abc",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"device_id\": 1,\n    \"temperature\": 35.0,\n    \"humidity\": 85.0,\n    \"status\": \"online\",\n    \"event_timestamp\": \"2025-08-06\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/device-data",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"device-data"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "xyz123abc",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"device_id\": 1,\n    \"temperature\": 35.0,\n    \"humidity\": 85.0,\n    \"status\": \"online\",\n    \"event_timestamp\": \"2025-08-06\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/device-data",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"device-data"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.7"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 06 Aug 2025 12:06:18 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Device data stored\",\n    \"data\": {\n        \"device_id\": 1,\n        \"temperature\": 35,\n        \"humidity\": 85,\n        \"status\": \"online\",\n        \"event_timestamp\": \"2025-08-06\",\n        \"updated_at\": \"2025-08-06T12:06:18.000000Z\",\n        \"created_at\": \"2025-08-06T12:06:18.000000Z\",\n        \"id\": 2\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Devise status",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-KEY",
+						"value": "xyz123abc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/devices/1/status",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"devices",
+						"1",
+						"status"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-API-KEY",
+								"value": "xyz123abc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/devices/1/status",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"devices",
+								"1",
+								"status"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.7"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 06 Aug 2025 12:14:09 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": {\n        \"device_id\": \"1\",\n        \"status\": \"active\",\n        \"timestamp\": null\n    },\n    \"data\": \"Device status fetched successfully.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Status History",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "New Request Copy",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "xyz123abc",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8000/api/device/1/history?from=2025-08-01&to=2025-08-06",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"device",
+								"1",
+								"history"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "2025-08-01"
+								},
+								{
+									"key": "to",
+									"value": "2025-08-06"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.7"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 06 Aug 2025 13:44:47 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Device history fetched\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"device_id\": \"1\",\n            \"temperature\": 30,\n            \"humidity\": 80,\n            \"status\": \"active\",\n            \"additional_data\": null,\n            \"event_timestamp\": \"2025-08-06 00:00:00\",\n            \"created_at\": \"2025-08-06T11:30:07.000000Z\",\n            \"updated_at\": \"2025-08-06T11:30:07.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"device_id\": \"1\",\n            \"temperature\": 35,\n            \"humidity\": 85,\n            \"status\": \"online\",\n            \"additional_data\": null,\n            \"event_timestamp\": \"2025-08-06 00:00:00\",\n            \"created_at\": \"2025-08-06T12:06:18.000000Z\",\n            \"updated_at\": \"2025-08-06T12:06:18.000000Z\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Update device meta data",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "xyz123abc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"temp machine\",\n    \"location\": \"khulna\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/device/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"device",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update device meta data",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "xyz123abc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"temp machine\",\n    \"location\": \"khulna\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/device/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"device",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "localhost:8000"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.3.7"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 06 Aug 2025 12:53:40 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Device metadata updated successfully.\",\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"temp machine\",\n        \"location\": \"khulna\",\n        \"api_key\": \"xyz123abc\",\n        \"created_at\": null,\n        \"updated_at\": \"2025-08-06T12:53:40.000000Z\"\n    }\n}"
+				}
+			]
+		}
+	]
+}
