@@ -4,6 +4,7 @@ namespace App\Http\Repositories;
 
 use App\Models\DeviceData;
 use App\Http\Repositories\BaseRepository;
+use Illuminate\Database\Eloquent\Collection;
 
 class DeviceDataRepository extends BaseRepository
 {
@@ -16,4 +17,22 @@ class DeviceDataRepository extends BaseRepository
     {
         return $this->model->create($data);
     }
+
+    public function latestStatus(int $deviceId): ?DeviceData
+    {
+        return $this->model
+            ->where('device_id', $deviceId)
+            ->latest('event_timestamp')
+            ->first();
+    }
+
+    public function getHistory(int $deviceId, string $from, string $to): Collection
+    {
+        return $this->model
+            ->where('device_id', $deviceId)
+            ->whereBetween('created_at', [$from, $to])
+            ->orderBy('created_at', 'desc')
+            ->get();
+    }
+
 }

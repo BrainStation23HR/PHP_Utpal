@@ -3,11 +3,15 @@ namespace App\Http\Services;
 
 
 use App\Events\DeviceDataReceived;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use App\Http\Repositories\DeviceDataRepository;
 
 class DeviceDataService
 {
+    protected string $cachePrefix = 'device_status:';
+    protected int $cacheTtl = 60; // seconds
+
     public function __construct(protected DeviceDataRepository $repository) {}
 
     public function store(array $data)
@@ -18,5 +22,24 @@ class DeviceDataService
         // broadcast(new DeviceDataReceived($record));
 
         return $record;
+    }
+
+    public function getLatestStatus(int $deviceId): ?array
+    {
+        $cacheKey = $this->cachePrefix . $deviceId;
+
+        return Cache::remember($cacheKey, $this->cacheTtl, function () use ($deviceId) {
+            $latest = $this->repository->latestStatus($deviceId);
+            return $latest ? [
+                'device_id' => $latest->device_id,
+                'status' => $latest->status,
+                'timestamp' => $latest->timestamp,
+            ] : null;
+        });
+    }
+
+    public function getHistory(int $deviceId, string $from, string $to): Collection
+    {
+        return $this->repository->getHistory($deviceId, $from, $to);
     }
 }
